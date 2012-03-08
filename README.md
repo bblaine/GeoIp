@@ -2,6 +2,9 @@
 
 Retreive the geolocation of an IP address based on the ipinfodb.com IP location API. 
 
+##Build
+Compile using 'sbt compile' and create jar with 'sbt package'.
+
 ##Usage
 
 API keys can be obtained from ipinfodb.com
