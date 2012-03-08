@@ -18,21 +18,21 @@ class GeoIP(key: String) {
   var ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + Country.toString + "/?key=" + key + "&ip=" + "" + "&format=" + "raw")
 
   def getGeoXML(ipAddress: String, api: API): Elem = {
-    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + Country.toString + "/?key=" + key + "&ip=" + ipAddress + "&format=" + "xml")
+    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + api.toString + "/?key=" + key + "&ip=" + ipAddress + "&format=" + "xml")
     val conn = ipInfoDBURL.openConnection
 
     XML.load(conn.getInputStream)
   }
 
   def getGeoRaw(ipAddress: String, api: API): String = {
-    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + Country.toString + "/?key=" + key + "&ip=" + ipAddress + "&format=" + "raw")
+    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + api.toString + "/?key=" + key + "&ip=" + ipAddress + "&format=" + "raw")
     val conn = ipInfoDBURL.openConnection
 
     convertStreamToString(conn.getInputStream)
   }
 
   def getGeoJSON(ipAddress: String, api: API): Option[Any] = {
-    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + Country.toString + "/?key=" + key + "&ip=" + "" + "&format=" + "json")
+    ipInfoDBURL = new URL("http://api.ipinfodb.com/v3/" + api.toString + "/?key=" + key + "&ip=" + "" + "&format=" + "json")
     val conn = ipInfoDBURL.openConnection
 
     JSON.parseFull(convertStreamToString(conn.getInputStream))
