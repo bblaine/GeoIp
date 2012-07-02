@@ -55,3 +55,24 @@ returns a scala.xml.Elem
 Return an Option[Any]
     
     res2: Option[Any] = Some(Map(statusCode -> OK, cityName -> , latitude -> , countryName -> , zipCode -> , longitude -> , countryCode -> , ipAddress -> , statusMessage -> , regionName -> , timeZone -> ))
+    
+###Usage from Java
+The library can bee easily used from Java by referencing the built jar or classes and the scala-library.jar on the classpath.
+
+For example, here is a simple program where the library is used:
+import org.bblaine.*;
+
+    class TestFromJava{
+      public static void main(String args[]){
+        GeoIP geoip = new GeoIP("<API Key>");
+        //Note the $.MODULE$ syntax to refer to the case class in Scala.
+        System.out.println(geoip.getGeoRaw("<IP Address>", City$.MODULE$));
+     }
+    }
+
+To build 'javac -cp ipgeomap_2.9.1-0.1-SNAPSHOT.jar:scala-library.jar TestFromJava.java'
+
+To run 'java -cp ipgeomap_2.9.1-0.1-SNAPSHOT.jar:scala-library.jar:.'
+OK;;0.0.0.0;US;UNITED STATES;DISTRICT OF COLUMBIA;WASHINGTON;20001;38.9048;-77.0354;-05:00
+
+
